@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+
+:root {
+  /* Brand */
+  --blue: #0071e3;
+  --blue-hover: #0077ed;
+  --blue-light: #e8f4fd;
+
+  /* Neutrals */
+  --white: #ffffff;
+  --light: #f5f5f7;
+  --light-hover: #ebebed;
+  --border: #d2d2d7;
+  --border-light: #e8e8ed;
+
+  /* Text */
+  --text: #1d1d1f;
+  --text-secondary: #6e6e73;
+  --text-tertiary: #86868b;
+
+  /* Status */
+  --green: #34c759;
+  --orange: #ff9500;
+  --red: #ff3b30;
+  --gold: #bf8000;
+}
+
+html {
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  color: var(--text);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #c7c7cc; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #aeaeb2; }
+
+/* ── Selection ── */
+::selection {
+  background: rgba(0, 113, 227, 0.2);
+  color: var(--text);
+}
+
+/* ── Focus ── */
+*:focus-visible {
+  outline: 2px solid rgba(0, 113, 227, 0.6);
+  outline-offset: 2px;
+}
+
+/* ── Container ── */
+.container-store {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (max-width: 768px) {
+  .container-store { padding: 0 16px; }
+}
+
+/* ── Marquee ── */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 32s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ── Skeleton ── */
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+.skeleton {
+  background: #e8e8ed;
+  border-radius: 6px;
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+/* ── Shimmer ── */
+@keyframes shimmer {
+  0%   { background-position: -600px 0; }
+  100% { background-position:  600px 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, #f0f0f5 25%, #e8e8ed 50%, #f0f0f5 75%);
+  background-size: 600px 100%;
+  animation: shimmer 1.6s infinite linear;
+}
+
+/* ── Card hover ── */
+.card-hover {
+  transition: transform 0.22s cubic-bezier(0.4,0,0.2,1),
+              box-shadow 0.22s ease,
+              border-color 0.22s ease;
+}
+.card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.10);
+}
+
+/* ── Apple-style pill button ── */
+.btn-apple {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 22px;
+  border-radius: 980px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+.btn-apple:hover { transform: scale(1.02); }
+.btn-apple:active { transform: scale(0.98); }
+
+.btn-primary {
+  background: var(--blue);
+  color: #fff;
+}
+.btn-primary:hover { background: var(--blue-hover); }
+
+.btn-secondary {
+  background: var(--light);
+  color: var(--text);
+}
+.btn-secondary:hover { background: var(--light-hover); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--blue);
+  border: 1.5px solid var(--blue);
+}
+.btn-outline:hover { background: var(--blue-light); }
+
+/* ── Hide scrollbar ── */
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+
+/* ── Section defaults ── */
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.4px;
+}
+
+/* ── Badge pills ── */
+.badge-new   { background: var(--green); color: #fff; }
+.badge-used  { background: var(--orange); color: #fff; }
+.badge-offer { background: var(--red); color: #fff; }
+
+/* ── Apple-style mega menu transition ── */
+.mega-enter { opacity: 0; transform: translateY(-8px); }
+.mega-enter-active { opacity: 1; transform: translateY(0); transition: all 0.2s ease; }
