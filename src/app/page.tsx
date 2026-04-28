@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: 'iPhoneStore — iPhones Nuevos y Usados con Garantía',
 }
 
+// Disable static generation for this page since it depends on dynamic data
+export const dynamic = 'force-dynamic'
+
 async function getFeaturedProducts() {
   return prisma.product.findMany({
     where: { isActive: true, isFeatured: true },
